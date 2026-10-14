@@ -1,0 +1,41 @@
+def calculateElectronicsGST(a, b):
+    amount = a + b
+    return amount + (amount * 18 / 100)
+
+
+def calculateFashionGST(c, d):
+    amount = c + d
+    return amount + (amount * 13 / 100)
+
+
+def calculateFoodGST(e):
+    return e + (e * 7 / 100)
+
+
+def totalBill(a, b, c, d, e):
+    electronics = calculateElectronicsGST(a, b)
+    fashion = calculateFashionGST(c, d)
+    food = calculateFoodGST(e)
+
+    return electronics + fashion + food
+
+
+def calculateDiscountedBill(a, b, c, d, e):
+    total = totalBill(a, b, c, d, e)
+    discount = total * 20 / 100
+    return total - discount
+
+
+a = float(input("Enter electronics item 1 amount: "))
+b = float(input("Enter electronics item 2 amount: "))
+c = float(input("Enter fashion item 1 amount: "))
+d = float(input("Enter fashion item 2 amount: "))
+e = float(input("Enter food item amount: "))
+
+total = totalBill(a, b, c, d, e)
+discount = total * 20 / 100
+final_amount = calculateDiscountedBill(a, b, c, d, e)
+
+print(f"Total after GST = {total:.2f}")
+print(f"Discount = {discount:.2f}")
+print(f"Final payable amount = {final_amount:.2f}")
